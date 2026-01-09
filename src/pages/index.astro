@@ -16,13 +16,18 @@ import PortfolioPreview from '../components/PortfolioPreview.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import Skills from '../components/Skills.astro';
 import PostPreview from '../components/PostPreview.astro';
+import PhotoPreview from '../components/PhotoPreview.astro';
 
 // Content Fetching: List four most recent work projects
-const projects = (await getCollection('work'))
+const projects = (await getCollection('work')).filter((c) => !c.data.hiddenOnMain)
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
 	.slice(0, 4);
 
-const posts = (await getCollection('posts'))
+const posts = (await getCollection('posts')).filter((c) => !c.data.hiddenOnMain)
+	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+	.slice(0, 4);
+
+const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMain)
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
 	.slice(0, 4);
 
@@ -36,18 +41,18 @@ const posts = (await getCollection('posts'))
 			<header class="hero">
 				<Hero
 					title="Bernhard Wittmann"
-					tagline="I am a Full-Stack Web & Mobile Developer who is currently based in Austria."
+					tagline="Senior Full Stack Engineer with 8+ years of experience building products at startups in Austria. Hands-on across mobile, web, and backend, owning features from idea to production."
 					align="start"
 				>
-					<div class="roles">
+					<!-- <div class="roles">
 						<Pill><Icon icon="code" size="1.33em" /> Developer</Pill>
 						<Pill><Icon icon="microphone-stage" size="1.33em" /> Speaker</Pill>
 						<Pill><Icon icon="pencil-line" size="1.33em" /> Writer</Pill>
-					</div>
+					</div>-->
 				</Hero>
 
 				<img
-					alt="Jeanine White smiling in a red plaid shirt and tortoise shell glasses"
+					alt="Portrait of Bernhard Wittmann"
 					width="480"
 					height="620"
 					src="/assets/portrait.jpg"
@@ -84,18 +89,44 @@ const posts = (await getCollection('posts'))
 				</div>
 			</section>
 
-			<section class="section with-background with-cta">
+			<!-- <section class="section with-background with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Blog posts</h3>
 					<p>Take a look below at some of my blog posts.</p>
 				</header>
 
 				<div class="gallery">
-					<Grid variant="offset">
+					<Grid variant="offset-reverse">
 						{
 							posts.map((post) => (
 								<li>
 									<PostPreview post={post} />
+								</li>
+							))
+						}
+					</Grid>
+				</div> 
+
+				<div class="cta">
+					<CallToAction href="/work/">
+						View All
+						<Icon icon="arrow-right" size="1.2em" />
+					</CallToAction>
+				</div>
+			</section>-->
+
+			<section class="section with-background  with-cta">
+				<header class="section-header stack gap-2 lg:gap-4">
+					<h3>Photography</h3>
+					<p>Just a hobby, but feel free to take a look</p>
+				</header>
+
+				<div class="gallery">
+					<Grid variant="offset">
+						{
+							photos.map((photo) => (
+								<li>
+									<PhotoPreview photo={photo} />
 								</li>
 							))
 						}

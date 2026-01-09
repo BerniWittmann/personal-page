@@ -102,7 +102,7 @@ const { Content } = await entry.render();
 		margin: 1.5rem 0;
 	}
 
-	.content :global(img) {
+	.content :global(img):not(.no-border) {
 		border-radius: 1.5rem;
 		box-shadow: var(--shadow-sm);
 		background: var(--gradient-subtle);

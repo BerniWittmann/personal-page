@@ -1,10 +1,16 @@
 ---
 import CallToAction from './CallToAction.astro';
 import Icon from './Icon.astro';
+
+interface Props {
+	leftText?: string
+}
+
+const { leftText = 'Interested in working together?' } = Astro.props;
 ---
 
 <aside>
-	<h2>Interested in working together?</h2>
+	<h2>{ leftText }</h2>
 	<CallToAction href="mailto:contact@bernhardwittmann.com">
 		Send Me a Message
 		<Icon icon="paper-plane-tilt" size="1.2em" />

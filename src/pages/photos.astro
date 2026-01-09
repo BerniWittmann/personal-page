@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+import Grid from '../components/Grid.astro';
+import PhotoPreview from '../components/PhotoPreview.astro';
+
+const photos = (await getCollection('photos')).sort(
+	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+---
+
+<BaseLayout
+	title="My Photos | Bernhard Wittmann"
+	description="Look at Bernhard Wittmann's photography"
+>
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-8">
+			<Hero
+				title="My Photography"
+				tagline="Get a glimpse at some of my photographs"
+				align="start"
+			/>
+			<Grid variant="offset">
+				{
+					photos.map((photo) => (
+						<li>
+							<PhotoPreview photo={photo} />
+						</li>
+					))
+				}
+			</Grid>
+		</main>
+		<ContactCTA />
+	</div>
+</BaseLayout>

@@ -255,3 +255,11 @@ h5 {
 		gap: 12rem;
 	}
 }
+
+.photo {
+	height: 70vh;
+	margin: 0 auto;
+	object-fit: contain;
+	object-position: center;
+	margin-bottom: 2rem;
+}
