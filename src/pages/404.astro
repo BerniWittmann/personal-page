@@ -1,8 +1,21 @@
 ---
+import { Image } from 'astro:assets';
 import Hero from '../components/Hero.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Not Found" description="404 Error — this page was not found">
 	<Hero title="Page Not Found" tagline="Not found" />
+	
+	<Image src="/assets/404.gif" width={500} height={500} alt=""/>
 </BaseLayout>
+
+<style>
+	img {
+		margin: 0 auto;
+		margin-top: 2rem;
+		margin-bottom: 2rem;
+		max-width: 100%;
+		aspect-ratio: 1;
+	}
+</style>
