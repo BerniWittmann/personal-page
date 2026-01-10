@@ -3,6 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 import ContactCTA from '../components/ContactCTA.astro';
 import Hero from '../components/Hero.astro';
+
+
+import portraitImage from '../assets/at-work.jpg';
+import { Image } from 'astro:assets';
 ---
 
 <BaseLayout title="About | Bernhard Wittmann" description="About Bernhard Wittmann">
@@ -12,11 +16,12 @@ import Hero from '../components/Hero.astro';
 				title="About"
 				tagline="Thanks for stopping by. Read below to learn more about myself and my background."
 			>
-				<img
+				<Image
 					width="1553"
 					height="873"
-					src="/assets/at-work.jpg"
-					alt="Jeanine White at work with a colleague"
+					src={portraitImage}
+					alt="Portrait of Bernhard Wittmann"
+					
 				/>
 			</Hero>
 
@@ -61,6 +66,7 @@ import Hero from '../components/Hero.astro';
 		margin-top: 1.5rem;
 		border-radius: 1.5rem;
 		box-shadow: var(--shadow-md);
+		object-position: top center;
 	}
 
 	section {

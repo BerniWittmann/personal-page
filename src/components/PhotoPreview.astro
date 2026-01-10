@@ -1,15 +1,16 @@
 ---
+import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
 	photo: CollectionEntry<'photos'>;
 }
 
-const { data, slug } = Astro.props.photo;
+const { data, id } = Astro.props.photo;
 ---
 
-<a class="card" href={`/photos/${slug}`}>
-	<img src={data.img} alt={data.description || ''} loading="lazy" decoding="async" />
+<a class="card" href={`/photos/${id}`}>
+	<Image src={data.img} alt={data.description || ''} loading="lazy" decoding="async"/>
 </a>
 
 <style>
@@ -48,6 +49,7 @@ const { data, slug } = Astro.props.photo;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		object-position: center;
 	}
 
 	@media (min-width: 50em) {

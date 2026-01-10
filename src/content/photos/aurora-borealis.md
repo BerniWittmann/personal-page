@@ -1,5 +1,5 @@
 ---
-img: /assets/photos/aurora-borealis.jpg
+img: ../../assets/photos/aurora-borealis.jpg
 publishDate:  2025-02-10
 title: Aurora Borealis
 description: The aurora borealis above a house

@@ -1,5 +1,5 @@
 ---
-img: /assets/photos/nockspitze.jpg
+img: ../../assets/photos/nockspitze.jpg
 unsplashUrl: https://unsplash.com/de/fotos/REUkDDBH07E
 publishDate:  2021-12-07 00:00:00
 title: Nockspitze
