@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { SEO } from "astro-seo";
 
 interface Props {
 	title?: string | undefined;
@@ -26,6 +27,26 @@ const {
 	rel="stylesheet"
 />
 <link rel="sitemap" href="/sitemap-index.xml" />
+
+<SEO
+	title="Personal Page of Bernhard Wittmann"
+	description="Bernhard Wittmann is a Senior Full Stack Engineer with 8+ years of experience building products at startups in Austria. Hands-on across mobile, web, and backend, owning features from idea to production."
+	openGraph={{
+		basic: {
+			title: 'Bernhard Wittmann',
+			type: "profile",
+			url: 'https://bernhardwittmann.com',
+			image: "https://bernhardwittmann.com/assets/og-image.jpg",
+		}
+	}}
+	extend={{
+		// extending the default link tags
+		link: [{ rel: "icon", href: "/favicon.ico" }],
+		// extending the default meta tags
+		meta: [],
+	}}
+/>
+
 
 <script is:inline>
 	// This code is inlined in the head to make dark mode instant & blocking.
