@@ -43,7 +43,7 @@ const { Content } = await render(entry);
 					</Hero>
 				</div>
 			</header>
-			<main class="wrapper">
+			<section class="wrapper">
 				<div class="stack gap-10 content content-full">
 					<Picture position="center" src={entry.data.img} alt={entry.data.description || ''} width={1000} class="photo"/>
 				</div>
@@ -53,7 +53,7 @@ const { Content } = await render(entry);
 						<Icon icon="download" size="1.2em" viewBoxSize={512} colorizeFill />
 					</CallToAction>
 				</div>) : null}
-			</main>
+			</section>
 		</div>
 		<ContactCTA />
 	</div>

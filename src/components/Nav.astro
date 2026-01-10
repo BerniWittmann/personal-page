@@ -39,15 +39,10 @@ const iconLinks: { label: string; href: string; icon: IconProps['icon'], viewBox
 				textLinks.map(({ label, href }) => (
 					<li>
 						<a
-							aria-current={Astro.url.pathname === href}
 							class:list={[
-								'link',
-								{
-									active:
-										Astro.url.pathname === href ||
-										(href !== '/' && Astro.url.pathname.startsWith(href)),
-								},
+								'link'
 							]}
+							class="nav-item-link"
 							href={href}
 						>
 							{label}
@@ -108,6 +103,29 @@ const iconLinks: { label: string; href: string; icon: IconProps['icon'], viewBox
 		}
 	}
 	customElements.define('menu-button', MenuButton);
+</script>
+
+<script>
+
+	const triggerMenuActiveState = () => {
+		const pathName =  window.swup?.location?.pathname ?? window.location.pathname
+		document.querySelectorAll('.nav-item-link').forEach((item) => {
+			if (item.attributes.getNamedItem('href')?.nodeValue === pathName) {
+				item.classList.add('active');
+			} else {
+				item.classList.remove('active')
+			}
+		})
+	}
+	const setup = () => {
+		triggerMenuActiveState();
+    	window.swup.hooks.on('page:view', triggerMenuActiveState)
+ 	 }
+	if (window.swup) {
+		setup()
+	} else {
+		document.addEventListener('swup:enable', setup)
+	}
 </script>
 
 <style>

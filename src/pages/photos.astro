@@ -18,7 +18,7 @@ const photos = (await getCollection('photos')).sort(
 	description="Look at Bernhard Wittmann's photography"
 >
 	<div class="stack gap-20">
-		<main class="wrapper stack gap-8">
+		<section class="wrapper stack gap-8">
 			<Hero
 				title="My Photography"
 				tagline="Get a glimpse at some of my photographs"
@@ -33,7 +33,7 @@ const photos = (await getCollection('photos')).sort(
 					))
 				}
 			</Grid>
-		</main>
+		</section>
 		<ContactCTA />
 	</div>
 </BaseLayout>
