@@ -1,7 +1,7 @@
 {
   "name": "personal-page",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
+    "@astrojs/sitemap": "^3.6.1",
     "astro": "^5.16.8"
   }
 }
