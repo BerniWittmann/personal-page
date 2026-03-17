@@ -14,7 +14,7 @@ import { Image } from 'astro:assets';
 		<div class="wrapper about">
 			<Hero
 				title="About"
-				tagline="Thanks for stopping by. Read below to learn more about myself and my background."
+				tagline="Senior Full Stack Engineer based in Innsbruck. Building products from idea to production for 8+ years."
 			>
 				<Image
 					width="1553"
@@ -44,9 +44,24 @@ import { Image } from 'astro:assets';
 			<section>
 				<h2 class="section-title">Skills</h2>
 				<div class="content">
-					<p>
-						I specialize in mobile and web development (React, React Native, NextJS, Vue, TypeScript, HTML/CSS), backend development (NodeJS, NestJS, Python/Django, Java, SQL/PostgreSQL, Docker), testing frameworks (Jest, Cypress, Selenium), and software engineering practices (CI/CD, Git, Agile/Scrum). I am fluent in English and a native German speaker, with a proven ability to lead projects end-to-end, mentor teams, and deliver high-quality software.
-					</p>
+					<dl class="skills-list">
+						<div>
+							<dt>Frontend</dt>
+							<dd>React, React Native, NextJS, Vue, TypeScript, HTML/CSS</dd>
+						</div>
+						<div>
+							<dt>Backend</dt>
+							<dd>NodeJS, NestJS, Python/Django, Java, PostgreSQL, Docker</dd>
+						</div>
+						<div>
+							<dt>Practices</dt>
+							<dd>Jest, Cypress, CI/CD, Git, Agile/Scrum</dd>
+						</div>
+						<div>
+							<dt>Languages</dt>
+							<dd>German (native), English (fluent)</dd>
+						</div>
+					</dl>
 				</div>
 			</section>
 		</div>
@@ -84,6 +99,30 @@ import { Image } from 'astro:assets';
 
 	.content {
 		grid-column: 2 / 4;
+	}
+
+	.content :global(.skills-list) {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		margin: 0;
+		padding: 0;
+	}
+
+	.content :global(.skills-list div) {
+		display: grid;
+		grid-template-columns: 6rem 1fr;
+		gap: 0.5rem;
+	}
+
+	.content :global(.skills-list dt) {
+		color: var(--gray-0);
+		font-weight: 600;
+	}
+
+	.content :global(.skills-list dd) {
+		margin: 0;
+		color: var(--gray-200);
 	}
 
 	.content :global(a) {
