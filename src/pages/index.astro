@@ -11,6 +11,7 @@ import Hero from '../components/Hero.astro';
 import Icon from '../components/Icon.astro';
 import Pill from '../components/Pill.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
+import FeaturedWork from '../components/FeaturedWork.astro';
 
 // Page section components
 import ContactCTA from '../components/ContactCTA.astro';
@@ -21,9 +22,11 @@ import portraitImage from '../assets/portrait.jpg';
 
 
 // Content Fetching: List four most recent work projects
-const projects = (await getCollection('work')).filter((c) => !c.data.hiddenOnMain)
+const allProjects = (await getCollection('work')).filter((c) => !c.data.hiddenOnMain)
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
 	.slice(0, 4);
+
+const [featuredProject, ...restProjects] = allProjects;
 
 const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMain)
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
@@ -42,11 +45,17 @@ const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMai
 					tagline="Senior Full Stack Engineer with 8+ years of experience building products at startups in Austria. Hands-on across mobile, web, and backend, owning features from idea to production."
 					align="start"
 				>
-					<!-- <div class="roles">
-						<Pill><Icon icon="code" size="1.33em" /> Developer</Pill>
-						<Pill><Icon icon="microphone-stage" size="1.33em" /> Speaker</Pill>
-						<Pill><Icon icon="pencil-line" size="1.33em" /> Writer</Pill>
-					</div>-->
+					<div class="roles">
+						<Pill>Senior Engineer</Pill>
+						<Pill>8+ years</Pill>
+						<Pill>Austria</Pill>
+					</div>
+					<div class="hero-cta">
+						<CallToAction href="/work/">
+							View My Work
+							<Icon icon="arrow-right" size="1.2em" />
+						</CallToAction>
+					</div>
 				</Hero>
 
 				<Picture
@@ -63,14 +72,16 @@ const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMai
 		<div class="wrapper stack gap-20 lg:gap-48">
 			<section class="section with-background with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Selected Work</h3>
+					<span class="section-eyebrow">Portfolio</span>
+					<h3 class="section-heading">Selected Work</h3>
 					<p>Take a look below at some of my featured work from the past few years.</p>
 				</header>
 
 				<div class="gallery">
-					<Grid variant="offset">
+					{featuredProject && <FeaturedWork project={featuredProject} />}
+					<Grid variant="small">
 						{
-							projects.map((project) => (
+							restProjects.map((project) => (
 								<li>
 									<PortfolioPreview project={project} />
 								</li>
@@ -87,14 +98,15 @@ const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMai
 				</div>
 			</section>
 
-			<section class="section with-background  with-cta">
+			<section class="section with-background with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Photography</h3>
+					<span class="section-eyebrow">Photography</span>
+					<h3 class="section-heading">Photography</h3>
 					<p>Slowing down through a lens.</p>
 				</header>
 
 				<div class="gallery">
-					<Grid variant="offset">
+					<Grid variant="masonry">
 						{
 							photos.map((photo) => (
 								<li>
@@ -127,7 +139,14 @@ const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMai
 	}
 
 	.roles {
-		display: none;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: 0.5rem;
+	}
+
+	.hero-cta {
+		margin-top: 1rem;
 	}
 
 	.hero img {
@@ -146,16 +165,15 @@ const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMai
 			gap: 3.75rem;
 		}
 
-		.roles {
-			margin-top: 0.5rem;
-			display: flex;
-			gap: 0.5rem;
-		}
-
 		.hero img {
 			aspect-ratio: 3 / 4;
-			border-radius: 4.5rem;
+			border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
 			object-fit: cover;
+			transition: border-radius 0.4s ease;
+		}
+
+		.hero img:hover {
+			border-radius: 4.5rem;
 		}
 	}
 
@@ -179,7 +197,7 @@ const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMai
 		aspect-ratio: calc(2.25 / var(--bg-scale));
 		top: 0;
 		transform: translateY(-75%) translateX(-50%);
-		background: /* url('/assets/backgrounds/noise.png') top center/220px repeat, ;*/ var(--gray-999);
+		background: var(--gray-999);
 		background-blend-mode: overlay, normal, normal, normal;
 		mix-blend-mode: var(--bg-blend-mode);
 		z-index: -1;
@@ -232,28 +250,6 @@ const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMai
 
 		.cta {
 			grid-area: cta;
-		}
-	}
-
-	/* ====================================================== */
-
-	.mention-card {
-		display: flex;
-		height: 7rem;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-		border: 1px solid var(--gray-800);
-		border-radius: 1.5rem;
-		color: var(--gray-300);
-		background: var(--gradient-subtle);
-		box-shadow: var(--shadow-sm);
-	}
-
-	@media (min-width: 50em) {
-		.mention-card {
-			border-radius: 1.5rem;
-			height: 9.5rem;
 		}
 	}
 </style>

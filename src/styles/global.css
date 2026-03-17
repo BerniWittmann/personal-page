@@ -76,6 +76,9 @@
 
 	/* Transitions */
 	--theme-transition: 0.2s ease-in-out;
+
+	/* Glass surface */
+	--surface-glass: hsla(var(--gray-999-basis), 0.85);
 }
 
 :root.theme-dark {
@@ -186,6 +189,39 @@ h5 {
 }
 
 /* Utilities */
+
+/* Section typography utilities */
+
+.section-eyebrow {
+	display: block;
+	font-size: var(--text-sm);
+	font-family: var(--font-brand);
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--accent-regular);
+	margin-bottom: 0.5rem;
+}
+
+:root.theme-dark .section-eyebrow {
+	color: var(--accent-dark);
+}
+
+.section-heading {
+	position: relative;
+	display: inline-block;
+}
+
+.section-heading::after {
+	content: '';
+	position: absolute;
+	bottom: -0.25rem;
+	left: 0;
+	width: 2.5rem;
+	height: 3px;
+	background: var(--gradient-accent);
+	border-radius: 2px;
+}
 
 .sr-only {
 	position: absolute;

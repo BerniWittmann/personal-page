@@ -22,7 +22,7 @@ const { title, description } = Astro.props;
 	<body>
 		<div class="stack backgrounds">
 			<Nav />
-			<main><slot /></main>
+			<main class="page-content"><slot /></main>
 			<Footer />
 		</div>
 
@@ -91,11 +91,11 @@ const { title, description } = Astro.props;
 			.backgrounds {
 				min-height: 100%;
 				isolation: isolate;
-				background:
-					/*noise*/ /* url('/assets/backgrounds/noise.png') top center/220px repeat,*/
-					/*base*/ var(--gray-999);
-				background-blend-mode: /*noise*/ overlay, /*footer*/ var(--bg-blend-mode),
-					/*header1*/ var(--bg-svg-blend-mode), /*header2*/ normal, /*base*/ normal;
+				background: var(--gray-999);
+			}
+
+			.page-content {
+				padding-top: 2rem;
 			}
 			@media (forced-colors: active) {
 				/* Deactivate custom backgrounds for high contrast users. */

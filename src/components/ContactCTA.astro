@@ -11,7 +11,7 @@ const { leftText = 'Interested in working together?' } = Astro.props;
 
 <aside>
 	<h2>{ leftText }</h2>
-	<CallToAction href="mailto:contact@bernhardwittmann.com">
+	<CallToAction href="mailto:contact@bernhardwittmann.com" variant="outline">
 		Send Me a Message
 		<Icon icon="paper-plane-tilt" size="1.2em" />
 	</CallToAction>
@@ -23,17 +23,18 @@ const { leftText = 'Interested in working together?' } = Astro.props;
 		flex-direction: column;
 		align-items: center;
 		gap: 3rem;
-		border-top: 1px solid var(--gray-800);
-		border-bottom: 1px solid var(--gray-800);
 		padding: 5rem 1.5rem;
-		background-color: var(--gray-999_40);
-		box-shadow: var(--shadow-sm);
+		background: var(--gradient-accent);
+		border-radius: 1.5rem;
+		margin-inline: 1.5rem;
+		box-shadow: var(--shadow-md);
 	}
 
 	h2 {
 		font-size: var(--text-xl);
 		text-align: center;
 		max-width: 15ch;
+		color: var(--accent-text-over);
 	}
 
 	@media (min-width: 50em) {
@@ -42,6 +43,7 @@ const { leftText = 'Interested in working together?' } = Astro.props;
 			flex-direction: row;
 			flex-wrap: wrap;
 			justify-content: space-between;
+			margin-inline: 2.5rem;
 		}
 
 		h2 {

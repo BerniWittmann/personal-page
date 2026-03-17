@@ -1,15 +1,16 @@
 ---
 interface Props {
 	href: string;
+	variant?: 'default' | 'outline';
 }
 
-const { href } = Astro.props;
+const { href, variant = 'default' } = Astro.props;
 ---
 
-<a href={href}><slot /></a>
+<a href={href} class:list={['cta', { outline: variant === 'outline' }]}><slot /></a>
 
 <style>
-	a {
+	.cta {
 		position: relative;
 		display: flex;
 		place-content: center;
@@ -26,14 +27,21 @@ const { href } = Astro.props;
 		white-space: nowrap;
 	}
 
+	.cta.outline {
+		background: transparent;
+		border: 2px solid var(--accent-text-over);
+		color: var(--accent-text-over);
+		box-shadow: none;
+	}
+
 	@media (min-width: 20em) {
-		a {
+		.cta {
 			font-size: var(--text-lg);
 		}
 	}
 
 	/* Overlay for hover effects. */
-	a::after {
+	.cta::after {
 		content: '';
 		position: absolute;
 		inset: 0;
@@ -42,13 +50,13 @@ const { href } = Astro.props;
 		mix-blend-mode: overlay;
 	}
 
-	a:focus::after,
-	a:hover::after {
+	.cta:focus::after,
+	.cta:hover::after {
 		background-color: hsla(var(--gray-999-basis), 0.3);
 	}
 
 	@media (min-width: 50em) {
-		a {
+		.cta {
 			padding: 1.125rem 2.5rem;
 			font-size: var(--text-xl);
 		}

@@ -2,18 +2,18 @@
 import Icon from './Icon.astro';
 ---
 
-<section class="box skills">
-	<div class="stack gap-2 lg:gap-4">
+<section class="skills">
+	<div class="skill-card stack gap-2 lg:gap-4">
 		<Icon icon="terminal-window" color="var(--accent-regular)" size="2.5rem" gradient />
 		<h2>Full Stack</h2>
 		<p>Web, mobile, backend, and everything in between.</p>
 	</div>
-	<div class="stack gap-2 lg:gap-4">
+	<div class="skill-card stack gap-2 lg:gap-4">
 		<Icon icon="trophy" color="var(--accent-regular)" size="2.5rem" gradient />
 		<h2>Startup Focused</h2>
 		<p>Worked on fintech products with > 150,000 users and > 10 Mio € in saving deposits.</p>
 	</div>
-	<div class="stack gap-2 lg:gap-4">
+	<div class="skill-card stack gap-2 lg:gap-4">
 		<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
 		<h2>End-to-End</h2>
 		<p>I love to own features from idea to production.</p>
@@ -21,18 +21,44 @@ import Icon from './Icon.astro';
 </section>
 
 <style>
-	.box {
-		border: 1px solid var(--gray-800);
-		border-radius: 0.75rem;
-		padding: 1.5rem;
-		background-color: var(--gray-999_40);
-		box-shadow: var(--shadow-sm);
-	}
-
 	.skills {
 		display: flex;
 		flex-direction: column;
-		gap: 3rem;
+		gap: 1.5rem;
+	}
+
+	.skill-card {
+		position: relative;
+		padding: 1.5rem;
+		border: 1px solid var(--gray-800);
+		border-radius: 1rem;
+		background: var(--gradient-subtle);
+		box-shadow: var(--shadow-sm);
+		overflow: hidden;
+		transition: border-color var(--theme-transition), box-shadow var(--theme-transition), transform var(--theme-transition);
+	}
+
+	.skill-card:hover {
+		border-color: var(--accent-regular);
+		box-shadow: var(--shadow-md);
+		transform: translateY(-2px);
+	}
+
+	.skill-card::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 3px;
+		background: var(--gradient-accent);
+		border-radius: 2px 2px 0 0;
+		opacity: 0;
+		transition: opacity var(--theme-transition);
+	}
+
+	.skill-card:hover::before {
+		opacity: 1;
 	}
 
 	.skills h2 {
@@ -44,15 +70,15 @@ import Icon from './Icon.astro';
 	}
 
 	@media (min-width: 50em) {
-		.box {
-			border-radius: 1.5rem;
-			padding: 2.5rem;
-		}
-
 		.skills {
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
-			gap: 5rem;
+			gap: 1.5rem;
+		}
+
+		.skill-card {
+			padding: 2rem;
+			border-radius: 1.5rem;
 		}
 
 		.skills h2 {

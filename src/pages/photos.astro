@@ -24,7 +24,7 @@ const photos = (await getCollection('photos')).sort(
 				tagline="Get a glimpse at some of my photographs"
 				align="start"
 			/>
-			<Grid variant="offset">
+			<Grid variant="masonry">
 				{
 					photos.map((photo) => (
 						<li>

@@ -1,0 +1,133 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import Pill from './Pill.astro';
+import CallToAction from './CallToAction.astro';
+import Icon from './Icon.astro';
+
+interface Props {
+	project: CollectionEntry<'work'>;
+}
+
+const { data, id } = Astro.props.project;
+---
+
+<a class="featured-card" href={`/work/${id}`}>
+	<div class="img-col">
+		<Image src={data.img} alt={data.img_alt || ''} loading="eager" decoding="async" />
+	</div>
+	<div class="details-col">
+		<h3 class="title">{data.title}</h3>
+		<p class="description">{data.description}</p>
+		{data.tags && (
+			<div class="tags">
+				{data.tags.map((tag: string) => <Pill>{tag}</Pill>)}
+			</div>
+		)}
+		<span class="cta-label">
+			View Project <Icon icon="arrow-right" size="1em" />
+		</span>
+	</div>
+</a>
+
+<style>
+	.featured-card {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid var(--gray-800);
+		border-radius: 1.5rem;
+		overflow: hidden;
+		background: var(--gradient-subtle);
+		box-shadow: var(--shadow-sm);
+		text-decoration: none;
+		color: inherit;
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		will-change: transform;
+		margin-bottom: 2rem;
+	}
+
+	.featured-card:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-lg);
+	}
+
+	.img-col {
+		overflow: hidden;
+		height: 16rem;
+	}
+
+	.img-col img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.4s ease;
+	}
+
+	.featured-card:hover .img-col img {
+		transform: scale(1.03);
+	}
+
+	.details-col {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		padding: 2rem;
+	}
+
+	.title {
+		font-size: var(--text-2xl);
+		color: var(--gray-0);
+		line-height: 1.2;
+	}
+
+	.description {
+		font-size: var(--text-base);
+		color: var(--gray-300);
+		line-height: 1.6;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.cta-label {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4em;
+		font-family: var(--font-brand);
+		font-weight: 600;
+		font-size: var(--text-base);
+		color: var(--accent-regular);
+		margin-top: 0.5rem;
+	}
+
+	:root.theme-dark .cta-label {
+		color: var(--accent-dark);
+	}
+
+	@media (min-width: 50em) {
+		.featured-card {
+			flex-direction: row;
+			height: 28rem;
+		}
+
+		.img-col {
+			width: 55%;
+			height: 100%;
+			flex-shrink: 0;
+		}
+
+		.details-col {
+			width: 45%;
+			justify-content: center;
+			padding: 3rem;
+			gap: 1.25rem;
+		}
+
+		.title {
+			font-size: var(--text-3xl);
+		}
+	}
+</style>
