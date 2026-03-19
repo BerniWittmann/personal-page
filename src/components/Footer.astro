@@ -53,6 +53,18 @@ const currentYear = new Date().getFullYear();
 		flex-wrap: wrap;
 	}
 
+	:global(:root.theme-dark) footer {
+		color: var(--gray-300);
+	}
+
+	:global(:root.theme-dark) footer div {
+		color: var(--gray-300);
+	}
+
+	:global(:root.theme-dark) footer a {
+		color: var(--gray-50);
+	}
+
 	@media (min-width: 50em) {
 		footer {
 			flex-direction: row;

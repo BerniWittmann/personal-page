@@ -3,12 +3,13 @@ interface Props {
 	title: string;
 	tagline?: string;
 	align?: 'start' | 'center';
+	noPadding?: boolean;
 }
 
-const { align = 'center', tagline, title } = Astro.props;
+const { align = 'center', tagline, title, noPadding = false } = Astro.props;
 ---
 
-<header class:list={['hero stack gap-4', align]}>
+<header class:list={['hero stack gap-4', align, { 'no-padding': noPadding }]}>
 	<div class="stack gap-2">
 		<div class="title-wrap">
 			<h1 class="title">{title}</h1>
@@ -23,6 +24,11 @@ const { align = 'center', tagline, title } = Astro.props;
 	.hero {
 		font-size: var(--text-lg);
 		text-align: center;
+		padding-block-start: 2.5rem;
+	}
+
+	.hero.no-padding {
+		padding-block-start: 0;
 	}
 
 	.title-wrap {

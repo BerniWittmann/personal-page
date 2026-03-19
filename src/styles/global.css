@@ -12,14 +12,14 @@
 	--gray-700: #d0d3dc;
 	--gray-800: #e4e6ed;
 	--gray-900: #f0f1f6;
-	--gray-999-basis: 40, 20%, 97%;
+	--gray-999-basis: 40, 20%, 100%;
 	--gray-999_40: hsla(var(--gray-999-basis), 0.6);
-	--gray-999: #f8f6f4;
+	--gray-999: #ffffff;
 
 	/* Alpine blue accent */
-	--accent-light: #7aa0d8;
-	--accent-regular: #2952a3;
-	--accent-dark: #1a3466;
+	--accent-light: #7a8cbe;
+	--accent-regular: #2f3c5f;
+	--accent-dark: #1c2439;
 	--accent-overlay: hsla(220, 60%, 50%, 0.15);
 	--accent-subtle-overlay: var(--accent-overlay);
 	--accent-text-over: #ffffff;

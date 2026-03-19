@@ -21,20 +21,6 @@ const { title, description } = Astro.props;
 	</head>
 	<body>
 		<div class="stack backgrounds">
-			<!-- Alpine mountain silhouette — decorative background element -->
-			<div class="mountain-backdrop" aria-hidden="true">
-				<svg
-					viewBox="0 0 1440 320"
-					preserveAspectRatio="none"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<!-- Nordkette-inspired silhouette (Innsbruck's mountain backdrop) -->
-					<path
-						d="M0,320 L0,260 L40,248 L70,235 L95,220 L115,205 L130,210 L148,195 L165,178 L178,165 L188,158 L200,162 L215,148 L228,132 L238,118 L248,108 L258,102 L268,96 L278,90 L290,84 L302,78 L315,70 L328,62 L340,56 L352,50 L364,44 L376,52 L388,58 L400,48 L412,38 L424,30 L436,24 L448,32 L460,42 L472,36 L484,26 L496,20 L508,28 L520,38 L532,44 L544,36 L556,28 L568,22 L580,30 L592,40 L604,48 L616,40 L628,32 L640,26 L652,34 L664,44 L676,52 L688,44 L700,36 L712,30 L724,38 L736,48 L748,56 L760,48 L772,40 L784,46 L796,54 L808,62 L820,54 L832,48 L844,56 L856,66 L868,74 L880,66 L892,58 L904,64 L916,72 L928,80 L940,88 L952,80 L964,74 L976,82 L988,90 L1000,98 L1012,106 L1024,114 L1036,106 L1048,100 L1060,108 L1072,118 L1084,126 L1096,134 L1108,126 L1120,120 L1132,128 L1144,138 L1156,148 L1168,156 L1180,148 L1192,142 L1204,150 L1216,162 L1228,172 L1240,164 L1252,158 L1264,166 L1276,178 L1288,190 L1300,200 L1312,210 L1324,218 L1336,226 L1348,234 L1360,240 L1380,248 L1400,254 L1420,260 L1440,264 L1440,320 Z"
-					></path>
-				</svg>
-			</div>
-
 			<Nav />
 			<main><slot /></main>
 			<Footer />
@@ -51,43 +37,6 @@ const { title, description } = Astro.props;
 				isolation: isolate;
 				background-color: var(--gray-999);
 				position: relative;
-			}
-
-			.mountain-backdrop {
-				position: fixed;
-				bottom: 0;
-				left: 0;
-				right: 0;
-				width: 100%;
-				height: 55vh;
-				pointer-events: none;
-				z-index: 0;
-				opacity: 1;
-			}
-
-			.mountain-backdrop svg {
-				width: 100%;
-				height: 100%;
-				display: block;
-			}
-
-			.mountain-backdrop path {
-				fill: var(--mountain-color);
-				transition: fill var(--theme-transition);
-			}
-
-			/* Ensure content sits above mountains */
-			nav,
-			main,
-			footer {
-				position: relative;
-				z-index: 1;
-			}
-
-			@media (forced-colors: active) {
-				.mountain-backdrop {
-					display: none;
-				}
 			}
 		</style>
 
