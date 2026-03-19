@@ -3,14 +3,18 @@ interface Props {
 	title: string;
 	tagline?: string;
 	align?: 'start' | 'center';
+	noPadding?: boolean;
 }
 
-const { align = 'center', tagline, title } = Astro.props;
+const { align = 'center', tagline, title, noPadding = false } = Astro.props;
 ---
 
-<header class:list={['hero stack gap-4', align]}>
+<header class:list={['hero stack gap-4', align, { 'no-padding': noPadding }]}>
 	<div class="stack gap-2">
-		<h1 class="title">{title}</h1>
+		<div class="title-wrap">
+			<h1 class="title">{title}</h1>
+			<div class="title-accent" aria-hidden="true"></div>
+		</div>
 		{tagline && <p class="tagline">{tagline}</p>}
 	</div>
 	<slot />
@@ -20,6 +24,16 @@ const { align = 'center', tagline, title } = Astro.props;
 	.hero {
 		font-size: var(--text-lg);
 		text-align: center;
+		padding-block-start: 2.5rem;
+	}
+
+	.hero.no-padding {
+		padding-block-start: 0;
+	}
+
+	.title-wrap {
+		position: relative;
+		display: inline-block;
 	}
 
 	.title,
@@ -31,6 +45,12 @@ const { align = 'center', tagline, title } = Astro.props;
 	.title {
 		font-size: var(--text-3xl);
 		color: var(--gray-0);
+		font-weight: 700;
+		letter-spacing: -0.03em;
+	}
+
+	.title-accent {
+		display: none;
 	}
 
 	@media (min-width: 50em) {
@@ -49,6 +69,17 @@ const { align = 'center', tagline, title } = Astro.props;
 
 		.title {
 			font-size: var(--text-5xl);
+		}
+
+		/* Decorative underline accent for the hero title */
+		.start .title-accent {
+			display: block;
+			height: 4px;
+			width: 3.5rem;
+			background: linear-gradient(90deg, var(--accent-regular), var(--accent-light));
+			border-radius: 2px;
+			margin-top: 1rem;
+			margin-bottom: 0.25rem;
 		}
 	}
 </style>

@@ -10,7 +10,10 @@ const { leftText = 'Interested in working together?' } = Astro.props;
 ---
 
 <aside>
-	<h2>{ leftText }</h2>
+	<div class="content">
+		<div class="label">Get in touch</div>
+		<h2>{ leftText }</h2>
+	</div>
 	<CallToAction href="mailto:contact@bernhardwittmann.com">
 		Send Me a Message
 		<Icon icon="paper-plane-tilt" size="1.2em" />
@@ -22,26 +25,61 @@ const { leftText = 'Interested in working together?' } = Astro.props;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 3rem;
+		gap: 2.5rem;
+		padding: 5rem 1.5rem;
+		background-color: var(--gray-999);
 		border-top: 1px solid var(--gray-800);
 		border-bottom: 1px solid var(--gray-800);
-		padding: 5rem 1.5rem;
-		background-color: var(--gray-999_40);
-		box-shadow: var(--shadow-sm);
+		position: relative;
+		overflow: hidden;
+	}
+
+	/* Subtle diagonal accent */
+	aside::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 3px;
+		background: linear-gradient(90deg, var(--accent-regular), var(--accent-light), transparent);
+	}
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		text-align: center;
+	}
+
+	.label {
+		font-family: var(--font-brand);
+		font-size: var(--text-sm);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--accent-regular);
 	}
 
 	h2 {
 		font-size: var(--text-xl);
 		text-align: center;
-		max-width: 15ch;
+		max-width: 20ch;
+		color: var(--gray-0);
 	}
 
 	@media (min-width: 50em) {
 		aside {
-			padding: 7.5rem;
+			padding: 6rem 5rem;
 			flex-direction: row;
 			flex-wrap: wrap;
 			justify-content: space-between;
+			align-items: center;
+		}
+
+		.content {
+			text-align: left;
+			gap: 0.5rem;
 		}
 
 		h2 {

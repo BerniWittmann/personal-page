@@ -41,12 +41,8 @@ const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMai
 					title="Bernhard Wittmann"
 					tagline="Senior Full Stack Engineer with 8+ years of experience building products at startups in Austria. Hands-on across mobile, web, and backend, owning features from idea to production."
 					align="start"
+					noPadding
 				>
-					<!-- <div class="roles">
-						<Pill><Icon icon="code" size="1.33em" /> Developer</Pill>
-						<Pill><Icon icon="microphone-stage" size="1.33em" /> Speaker</Pill>
-						<Pill><Icon icon="pencil-line" size="1.33em" /> Writer</Pill>
-					</div>-->
 				</Hero>
 
 				<Picture
@@ -61,8 +57,9 @@ const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMai
 		</div>
 
 		<div class="wrapper stack gap-20 lg:gap-48">
-			<section class="section with-background with-cta">
+			<section class="section with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
+					<div class="section-label">Portfolio</div>
 					<h3>Selected Work</h3>
 					<p>Take a look below at some of my featured work from the past few years.</p>
 				</header>
@@ -87,8 +84,9 @@ const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMai
 				</div>
 			</section>
 
-			<section class="section with-background  with-cta">
+			<section class="section with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
+					<div class="section-label">Creative</div>
 					<h3>Photography</h3>
 					<p>Slowing down through a lens.</p>
 				</header>
@@ -124,18 +122,16 @@ const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMai
 		flex-direction: column;
 		align-items: center;
 		gap: 2rem;
-	}
-
-	.roles {
-		display: none;
+		padding-top: 2rem;
 	}
 
 	.hero img {
 		aspect-ratio: 5 / 4;
 		object-fit: cover;
 		object-position: top;
-		border-radius: 1.5rem;
+		border-radius: 1rem;
 		box-shadow: var(--shadow-md);
+		border: 1px solid var(--gray-800);
 	}
 
 	@media (min-width: 50em) {
@@ -144,17 +140,12 @@ const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMai
 			grid-template-columns: 6fr 4fr;
 			padding-inline: 2.5rem;
 			gap: 3.75rem;
-		}
-
-		.roles {
-			margin-top: 0.5rem;
-			display: flex;
-			gap: 0.5rem;
+			padding-top: 3rem;
 		}
 
 		.hero img {
 			aspect-ratio: 3 / 4;
-			border-radius: 4.5rem;
+			border-radius: 1.5rem;
 			object-fit: cover;
 		}
 	}
@@ -166,27 +157,13 @@ const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMai
 		gap: 2rem;
 	}
 
-	.with-background {
-		position: relative;
-	}
-
-	.with-background::before {
-		content: '';
-		position: absolute;
-		pointer-events: none;
-		left: 50%;
-		width: 100vw;
-		aspect-ratio: calc(2.25 / var(--bg-scale));
-		top: 0;
-		transform: translateY(-75%) translateX(-50%);
-		background: /* url('/assets/backgrounds/noise.png') top center/220px repeat, ;*/ var(--gray-999);
-		background-blend-mode: overlay, normal, normal, normal;
-		mix-blend-mode: var(--bg-blend-mode);
-		z-index: -1;
-	}
-
-	.with-background.bg-variant::before {
-		--hero-bg: var(--bg-image-subtle-1);
+	.section-label {
+		font-family: var(--font-brand);
+		font-size: var(--text-sm);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--accent-regular);
 	}
 
 	.section-header {
@@ -199,6 +176,7 @@ const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMai
 
 	.section-header h3 {
 		font-size: var(--text-2xl);
+		color: var(--gray-0);
 	}
 
 	@media (min-width: 50em) {
@@ -232,28 +210,6 @@ const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMai
 
 		.cta {
 			grid-area: cta;
-		}
-	}
-
-	/* ====================================================== */
-
-	.mention-card {
-		display: flex;
-		height: 7rem;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-		border: 1px solid var(--gray-800);
-		border-radius: 1.5rem;
-		color: var(--gray-300);
-		background: var(--gradient-subtle);
-		box-shadow: var(--shadow-sm);
-	}
-
-	@media (min-width: 50em) {
-		.mention-card {
-			border-radius: 1.5rem;
-			height: 9.5rem;
 		}
 	}
 </style>
