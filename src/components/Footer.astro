@@ -8,46 +8,48 @@ const currentYear = new Date().getFullYear();
 		<p>&copy; {currentYear} Bernhard Wittmann</p>
 	</div>
 	<p class="socials">
-		<a href="mailto:contact@bernhardwittmann.com"> E-Mail</a>
-		<a href="https://github.com/BerniWittmann"> GitHub</a>
-		<a href="https://gitlab.com/BerniWittmann"> GitLab</a>
-		<a href="http://linkedin.com/in/bernhard-wittmann"> LinkedIn</a>
+		<a href="mailto:contact@bernhardwittmann.com">E-Mail</a>
+		<a href="https://github.com/BerniWittmann">GitHub</a>
+		<a href="https://gitlab.com/BerniWittmann">GitLab</a>
+		<a href="http://linkedin.com/in/bernhard-wittmann">LinkedIn</a>
 	</p>
 </footer>
 <style>
 	footer {
 		display: flex;
 		flex-direction: column;
-		gap: 3rem;
+		gap: 2rem;
 		margin-top: auto;
-		padding: 3rem 2rem 3rem;
+		padding: 3rem 2rem;
 		text-align: center;
 		color: var(--gray-400);
 		font-size: var(--text-sm);
+		border-top: 1px solid var(--gray-800);
+		background-color: var(--gray-999);
 	}
 
 	footer a {
-		color: var(--gray-400);
-		text-decoration: 1px solid underline transparent;
-		text-underline-offset: 0.25em;
-		transition: text-decoration-color var(--theme-transition);
+		color: var(--gray-300);
+		text-decoration: none;
+		transition: color var(--theme-transition);
 	}
 
 	footer a:hover,
 	footer a:focus {
-		text-decoration-color: currentColor;
+		color: var(--accent-regular);
 	}
 
 	.group {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
+		color: var(--gray-500);
 	}
 
 	.socials {
 		display: flex;
 		justify-content: center;
-		gap: 1rem;
+		gap: 1.5rem;
 		flex-wrap: wrap;
 	}
 
@@ -55,7 +57,7 @@ const currentYear = new Date().getFullYear();
 		footer {
 			flex-direction: row;
 			justify-content: space-between;
-			padding: 2.5rem 5rem;
+			padding: 2rem 4rem;
 		}
 
 		.group {

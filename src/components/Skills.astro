@@ -2,61 +2,83 @@
 import Icon from './Icon.astro';
 ---
 
-<section class="box skills">
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="terminal-window" color="var(--accent-regular)" size="2.5rem" gradient />
+<section class="skills">
+	<div class="box">
+		<div class="icon-wrap">
+			<Icon icon="terminal-window" color="var(--accent-regular)" size="1.75rem" gradient />
+		</div>
 		<h2>Full Stack</h2>
 		<p>Web, mobile, backend, and everything in between.</p>
 	</div>
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="trophy" color="var(--accent-regular)" size="2.5rem" gradient />
+	<div class="box">
+		<div class="icon-wrap">
+			<Icon icon="trophy" color="var(--accent-regular)" size="1.75rem" gradient />
+		</div>
 		<h2>Startup Focused</h2>
 		<p>Worked on fintech products with > 150,000 users and > 10 Mio € in saving deposits.</p>
 	</div>
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
+	<div class="box">
+		<div class="icon-wrap">
+			<Icon icon="strategy" color="var(--accent-regular)" size="1.75rem" gradient />
+		</div>
 		<h2>End-to-End</h2>
 		<p>I love to own features from idea to production.</p>
 	</div>
 </section>
 
 <style>
-	.box {
-		border: 1px solid var(--gray-800);
-		border-radius: 0.75rem;
-		padding: 1.5rem;
-		background-color: var(--gray-999_40);
-		box-shadow: var(--shadow-sm);
-	}
-
 	.skills {
 		display: flex;
 		flex-direction: column;
-		gap: 3rem;
+		gap: 1rem;
+	}
+
+	.box {
+		padding: 1.75rem 2rem;
+		background-color: var(--gray-999);
+		border: 1px solid var(--gray-800);
+		border-left: 3px solid var(--accent-regular);
+		border-radius: 0.5rem;
+		box-shadow: var(--shadow-sm);
+		transition: box-shadow var(--theme-transition), border-left-color var(--theme-transition);
+	}
+
+	.box:hover {
+		box-shadow: var(--shadow-md);
+		border-left-color: var(--accent-light);
+	}
+
+	.icon-wrap {
+		margin-bottom: 1rem;
+		color: var(--accent-regular);
 	}
 
 	.skills h2 {
 		font-size: var(--text-lg);
+		font-weight: 600;
+		margin-bottom: 0.5rem;
+		color: var(--gray-0);
 	}
 
 	.skills p {
-		color: var(--gray-400);
+		color: var(--gray-300);
+		font-size: var(--text-base);
+		line-height: 1.6;
 	}
 
 	@media (min-width: 50em) {
-		.box {
-			border-radius: 1.5rem;
-			padding: 2.5rem;
-		}
-
 		.skills {
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
-			gap: 5rem;
+			gap: 1.5rem;
+		}
+
+		.box {
+			padding: 2rem 2.25rem;
 		}
 
 		.skills h2 {
-			font-size: var(--text-2xl);
+			font-size: var(--text-xl);
 		}
 	}
 </style>
