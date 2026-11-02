@@ -1,3 +1,9 @@
+/* Hallmark · check · built: the project · redesign: polish · genre: editorial · theme: the project's own (alpine blue, Rubik over Public Sans) · v2.0.0 */
+/* Hallmark · pre-emit critique: polish only; system and layout kept by request · weakest: layout gates, reported as notes */
+/* Hallmark · answered 48 · :root.theme-dark is the project's declared dark theme block (class-toggled), so its literals are tokens
+ * waive 3 · the owner keeps the three skill cards as designed · waive 59 · polish keeps the owner's section spacing
+ * waive 83 · /work and /photos are galleries; the pictures are the page */
+
 /* Global variables */
 :root {
 	/* Colors — warm off-white background, deep navy text, alpine blue accent */
@@ -12,9 +18,9 @@
 	--gray-700: #d0d3dc;
 	--gray-800: #e4e6ed;
 	--gray-900: #f0f1f6;
-	--gray-999-basis: 40, 20%, 100%;
+	--gray-999-basis: 240, 33%, 99%;
 	--gray-999_40: hsla(var(--gray-999-basis), 0.6);
-	--gray-999: #ffffff;
+	--gray-999: #fbfbfd;
 
 	/* Alpine blue accent */
 	--accent-light: #7a8cbe;
@@ -94,7 +100,7 @@
 	--gray-50: #d8dbe8;
 	--gray-100: #b8bdd0;
 	--gray-200: #9298b0;
-	--gray-300: #6e7490;
+	--gray-300: #848aa5;
 	--gray-400: #525870;
 	--gray-500: #3a3f58;
 	--gray-600: #2c3048;
@@ -106,7 +112,7 @@
 	--gray-999_40: hsla(var(--gray-999-basis), 0.7);
 
 	--accent-light: #1a3466;
-	--accent-regular: #4a78c8;
+	--accent-regular: #4570c0;
 	--accent-dark: #7aa0d8;
 	--accent-overlay: hsla(220, 60%, 60%, 0.2);
 	--accent-subtle-overlay: hsla(220, 60%, 50%, 0.15);
@@ -145,7 +151,7 @@
 html,
 body {
 	min-height: 100%;
-	overflow-x: hidden;
+	overflow-x: clip;
 }
 
 body {
@@ -182,6 +188,23 @@ h5 {
 	font-weight: 600;
 	color: var(--gray-0);
 	letter-spacing: -0.02em;
+	text-wrap: balance;
+}
+
+:focus-visible {
+	outline: 2px solid var(--accent-regular);
+	outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
 }
 
 h1 {

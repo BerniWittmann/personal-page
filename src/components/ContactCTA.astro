@@ -11,7 +11,6 @@ const { leftText = 'Interested in working together?' } = Astro.props;
 
 <aside>
 	<div class="content">
-		<div class="label">Get in touch</div>
 		<h2>{ leftText }</h2>
 	</div>
 	<CallToAction href="mailto:contact@bernhardwittmann.com">
@@ -50,15 +49,6 @@ const { leftText = 'Interested in working together?' } = Astro.props;
 		flex-direction: column;
 		gap: 0.75rem;
 		text-align: center;
-	}
-
-	.label {
-		font-family: var(--font-brand);
-		font-size: var(--text-sm);
-		font-weight: 600;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		color: var(--accent-regular);
 	}
 
 	h2 {

@@ -59,7 +59,6 @@ const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMai
 		<div class="wrapper stack gap-20 lg:gap-48">
 			<section class="section with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
-					<div class="section-label">Portfolio</div>
 					<h3>Selected Work</h3>
 					<p>Take a look below at some of my featured work from the past few years.</p>
 				</header>
@@ -86,7 +85,6 @@ const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMai
 
 			<section class="section with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
-					<div class="section-label">Creative</div>
 					<h3>Photography</h3>
 					<p>Slowing down through a lens.</p>
 				</header>
@@ -137,7 +135,7 @@ const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMai
 	@media (min-width: 50em) {
 		.hero {
 			display: grid;
-			grid-template-columns: 6fr 4fr;
+			grid-template-columns: minmax(0, 6fr) minmax(0, 4fr);
 			padding-inline: 2.5rem;
 			gap: 3.75rem;
 			padding-top: 3rem;
@@ -155,15 +153,6 @@ const photos = (await getCollection('photos')).filter((c) => !c.data.hiddenOnMai
 	.section {
 		display: grid;
 		gap: 2rem;
-	}
-
-	.section-label {
-		font-family: var(--font-brand);
-		font-size: var(--text-sm);
-		font-weight: 600;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		color: var(--accent-regular);
 	}
 
 	.section-header {

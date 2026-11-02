@@ -46,6 +46,11 @@ const { href } = Astro.props;
 		box-shadow: var(--shadow-sm);
 	}
 
+	a[aria-disabled='true'] {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+
 	@media (min-width: 20em) {
 		a {
 			font-size: var(--text-lg);
